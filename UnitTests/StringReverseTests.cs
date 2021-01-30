@@ -11,7 +11,7 @@ namespace UnitTests
         {
             // Arrange - Act
             bool reverseEmptyIsPalindrome = StaticHelperMethods.IsStringPalindrome(string.Empty);
-            // Assert
+            // Assert ..
             Assert.IsTrue(reverseEmptyIsPalindrome);
         }
 

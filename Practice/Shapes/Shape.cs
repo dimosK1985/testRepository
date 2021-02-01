@@ -6,11 +6,17 @@ namespace Practice
     {
         public Shape()
         {
-            Id = Guid.NewGuid();
+            id = Guid.NewGuid();
         }
 
-        public int SideCount;
-        public Guid Id { get; private set; }
+        protected Guid id;
+    }
+
+    public interface IShape
+    {
+        int SideCount();
+
+        Guid Id();
     }
 
 }

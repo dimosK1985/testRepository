@@ -2,16 +2,30 @@
 
 namespace Practice
 {
-    public class Square : Shape, IDrawable
+    public class Square : Shape, IShape, IDrawable
     {
-        public Square()
+        internal Square()
         {
-            this.SideCount = 4;
         }
 
         public void Draw()
         {
             throw new NotImplementedException();
+        }
+
+        public Guid Id()
+        {
+            return this.id;
+        }
+
+        public int SideCount()
+        {
+            return 4;
+        }
+
+        public override string ToString()
+        {
+            return $"I am a square, my id is {Id()}. I have {SideCount()} sides";
         }
     }
 }

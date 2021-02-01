@@ -27,7 +27,7 @@ namespace Practice
         {
             if (abc.Length != 3)
             {
-                throw new Exception("This should not be generic, still though why feed in either less" +
+                throw new InvalidOperationException("This should not be generic, still though why feed in either less" +
                     "or more than 3 numbers?");
             }
 

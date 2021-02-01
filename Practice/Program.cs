@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using Practice.Shapes;
 
 namespace Practice
 {
@@ -7,23 +7,21 @@ namespace Practice
     {
         static void Main(string[] args)
         {
-            Triangle triangle = new Triangle();
-            List<IDrawable> shapes = new List<IDrawable>();
-            shapes.Add(triangle);
+            Game game = new Game();
+            game.AddShape(ShapesFactory.CreateShape(shapeSideCount: 3));
 
-            Dictionary<Guid, string> keyValuePairs = new Dictionary<Guid, string>();
-            HashSet<Shape> shapes1 = new HashSet<Shape>();
+            Console.WriteLine("blah");
+            Console.WriteLine(game.ToString());
 
-            keyValuePairs.Add(triangle.Id, "a");
-            // keyValuePairs.Add(triangle.Id, "1");
+            Console.ReadLine();
 
-            shapes1.Add(triangle);
-            shapes1.Add(triangle);
+            game.AddShape(ShapesFactory.CreateShape(shapeSideCount: 4));
 
-            foreach (IDrawable shape in shapes)
-            {
-                shape.Draw();
-            }
+            Console.WriteLine(game.ToString());
+
+            Console.ReadLine();
+
+            Console.ReadLine();
 
             Console.ReadLine();
         }

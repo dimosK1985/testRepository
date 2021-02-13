@@ -1,10 +1,9 @@
-﻿using System;
-namespace Practice
+﻿namespace Practice
 {
-    public class EmptyClass
-    {
-        public EmptyClass()
+    public interface IMaxStack
         {
+            void Push(int element);
+            int Pop();
+            int GetMax();
         }
-    }
 }

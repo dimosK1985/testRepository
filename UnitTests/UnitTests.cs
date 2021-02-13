@@ -1,45 +1,56 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Practice;
 
 namespace UnitTests
 {
     [TestClass]
-    public class StringReverseTests
+    public class UnitTests
     {
+        // 1. Get Max -> nothing in stack -> exception thrown
+        // 2. Get Max -> 0 + 1 in list -> returns 1
+        // 3. Get Max ->  -5 -7 in list -> returns -5
+        // 4. one in stack, Pop twice // or Pop empty stack
+        // 5. Push one int, expect it to be Max?
+        // 5. Push one int, expect it to be Poped
+        // 6. Pop , ask to pop when empty stack (exception? or not)
+        // 7. Push 3, Pop, expect the last one
+        private const string stackEmptyMessage = "Stack is empty";
+
         [TestMethod]
-        public void StringReverse_StringEmpty_ReturnsTrue()
+        public void MaxStack_NothingInStack_GetMax_ThrowsException()
         {
-            // Arrange - Act
-            bool reverseEmptyIsPalindrome = StaticHelperMethods.IsStringPalindrome(string.Empty);
-            // Assert ..
-            Assert.IsTrue(reverseEmptyIsPalindrome);
+            // Arrange
+            MaxStack maxStack = new MaxStack();
+            // Act
+            Action action = () => maxStack.GetMax();
+            // Assert
+            Assert.ThrowsException<Exception>(action, stackEmptyMessage);
         }
 
         [TestMethod]
-        public void StringReverse_StringNull_ReturnsTrue()
+        public void MaxStack_NothingInStack_Pop_ThrowsException()
         {
-            // Arrange - Act
-            bool reverseNullIsPalindrome = StaticHelperMethods.IsStringPalindrome(null);
+            // Arrange
+            MaxStack maxStack = new MaxStack();
+            // Act
+            Action action = () => maxStack.Pop();
             // Assert
-            Assert.IsTrue(reverseNullIsPalindrome);
+            Assert.ThrowsException<EmptyStackException>(action, stackEmptyMessage);
         }
 
         [TestMethod]
-        public void StringReverse_StringAbc_ReturnsFalse()
+        public void MaxStack_PushThreeIntegers_Pop_PopReturnsLast()
         {
-            // Arrange - Act
-            bool reverseIsPalindrome = StaticHelperMethods.IsStringPalindrome("abc");
+            // Arrange
+            int expectedInt = 5;
+            MaxStack maxStack = new MaxStack();
+            // Act
+            maxStack.Push(1);
+            maxStack.Push(-2);
+            maxStack.Push(expectedInt);
             // Assert
-            Assert.IsFalse(reverseIsPalindrome);
-        }
-
-        [TestMethod]
-        public void StringReverse_StringAnna_ReturnsTrue()
-        {
-            // Arrange - Act
-            bool reverseIsPalindrome = StaticHelperMethods.IsStringPalindrome("anna");
-            // Assert
-            Assert.IsTrue(reverseIsPalindrome);
+            Assert.AreEqual(expectedInt, maxStack.Pop());
         }
     }
 }
